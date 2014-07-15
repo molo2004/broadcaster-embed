@@ -1,0 +1,15 @@
+{
+	"name": "ustream/api_oauth_example",
+	"authors": [{
+		"name": "Attila Gonda",
+		"email": "gonda.attila@ustream.tv"
+	}],
+
+	"config": {
+		"vendor-dir": "vendor"
+	},
+
+	"require": {
+		"lusitanian/oauth": "0.1.*@dev"
+	}
+}

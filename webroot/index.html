@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ustream Broadcaster Embed Example</title>
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+	<div class="container" style="width: 700px;">
+
+		<h1>Ustream Broadcaster Embed Example</h1>
+
+		<div class="panel panel-primary" style="display: none;">
+			<div class="panel-heading">
+				<h3 class="panel-title">Select a channel to broadcast</h3>
+			</div>
+
+			<div class="panel-body">
+				<ul id="channel-selector" class="nav nav-pills nav-stacked"></ul>
+			</div>
+		</div>
+
+		<div class="panel panel-primary" style="display: none;">
+			<div class="panel-heading">
+				<h3 class="panel-title">Broadcaster</h3>
+			</div>
+
+			<div class="panel-body">
+				<div id="Broadcaster"></div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+	<script src="scripts/require-config.js"></script>
+
+	<script>
+		window.ustream = {};
+		require(['app']);
+	</script>
+
+</body>
+</html>
