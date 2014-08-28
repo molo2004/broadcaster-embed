@@ -23,7 +23,8 @@ define(
 					allowscriptaccess: 'always'
 				},
 				flashVars: {
-					objectPath: 'window.ustream.flash.handler'
+					objectPath: 'window.ustream.flash.handler',
+					retina: window.devicePixelRatio >= 2
 				}
 			},
 			flashBroadcaster,
