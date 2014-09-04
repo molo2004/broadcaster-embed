@@ -1,8 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
     "hash": "d3ba89a92a01af9bb52d7a6656cab6ea",
     "packages": [
@@ -12,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Lusitanian/PHPoAuthLib.git",
-                "reference": "2d0da3dcb4210d1400bb0abd7f3497448cf55ccb"
+                "reference": "1a889bd87aedccd8bb8d7869a372fbb66add68f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/2d0da3dcb4210d1400bb0abd7f3497448cf55ccb",
-                "reference": "2d0da3dcb4210d1400bb0abd7f3497448cf55ccb",
+                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/1a889bd87aedccd8bb8d7869a372fbb66add68f7",
+                "reference": "1a889bd87aedccd8bb8d7869a372fbb66add68f7",
                 "shasum": ""
             },
             "require": {
@@ -56,9 +55,7 @@
                 },
                 {
                     "name": "Pieter Hordijk",
-                    "email": "info@pieterhordijk.com",
-                    "homepage": "https://pieterhordijk.com",
-                    "role": "developer"
+                    "email": "info@pieterhordijk.com"
                 }
             ],
             "description": "PHP 5.3+ oAuth 1/2 Library",
@@ -68,7 +65,7 @@
                 "oauth",
                 "security"
             ],
-            "time": "2014-05-14 19:07:24"
+            "time": "2014-09-04 01:07:42"
         }
     ],
     "packages-dev": [

@@ -6,7 +6,6 @@ use OAuth\Common\Consumer\Credentials;
 ini_set('html_errors', false);
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../UstreamService.php';
 require_once __DIR__ . '/../api_config.php';
 
 // Session storage
