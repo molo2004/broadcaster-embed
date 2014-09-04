@@ -46,6 +46,10 @@ define(
 				accessToken = response.accessToken;
 				tokenExpireTime = response.expiresIn;
 
+				if (!hasAccessToken()) {
+					throw new Error('It seems the requested access token is faulty.');
+				}
+
 				window.history &&
 				window.history.pushState({}, document.title, window.location.href.replace(/\?.*/, ''));
 
