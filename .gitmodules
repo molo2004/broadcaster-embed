@@ -1,0 +1,3 @@
+[submodule "playerapi"]
+	path = playerapi
+	url = https://github.com/ustream/embedapi.git

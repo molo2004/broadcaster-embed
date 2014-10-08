@@ -4,9 +4,9 @@ This is an example code for using the Ustream Broadcaster API with OAuth authent
 
 ## Installation
 
-### Get the repository and install Composer dependencies
+### Get the repository and install dependencies
 ```
-git clone https://github.com/ustream/broadcaster-embed.git 
+git clone https://github.com/ustream/broadcaster-embed.git --recursive
 cd broadcaster-embed
 composer install
 ```
