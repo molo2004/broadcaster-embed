@@ -1,0 +1,47 @@
+h1 {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.row {
+	width: 672px;
+	margin: 0 auto;
+}
+.row-wide {
+	width: 1404px;
+}
+
+.tab-content {
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-width: 0 1px 1px;
+	border-radius: 0 0 4px 4px;
+}
+
+.syncedmeta {
+	max-height: 300px;
+	margin-bottom: 15px;
+	overflow: scroll;
+}
+
+textarea {
+	max-height: 195px;
+	resize: vertical;
+}
+
+table:only-child {
+	margin-bottom: 0;
+}
+
+th.timestamp {
+	width: 110px;
+}
+
+td.timestamp {
+	font-size: 12px;
+}
+
+td.message {
+	font: 12px monospace;
+	white-space: pre-wrap;
+}

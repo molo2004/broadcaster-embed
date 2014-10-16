@@ -1,3 +1,6 @@
+/**
+ * Ustream API
+ */
 define(
 	[
 		'jquery'
@@ -9,6 +12,10 @@ define(
 			accessToken,
 			tokenExpireTime;
 
+		/**
+		 * Parse query parameters from URL
+		 * @function getQueryParameters
+		 */
 		function getQueryParameters(){
 			var rawParams = window.location.search.match(/(?:\?|&)([^&=]+)(=[^&]*)/g) || [],
 				params = {};
@@ -22,17 +29,30 @@ define(
 			return params;
 		}
 
+		/**
+		 * Verify the existence of the access token
+		 * @function hasAccessToken
+		 * @return {Boolean}
+		 */
 		function hasAccessToken(){
 			var unixNow = Math.floor(new Date().getTime() / 1000);
 
+			// invalidate the access token if it's expired
 			return accessToken && unixNow < tokenExpireTime;
 		}
 
+		/**
+		 *
+		 * @function getAccessToken
+		 * @param {Function} callback
+		 */
 		function getAccessToken(callback){
 			var queryParams = getQueryParameters();
 
 			if (hasAccessToken()) {
-				callback && callback(accessToken);
+				if (typeof callback === 'function') {
+					callback(accessToken);
+				}
 				return;
 			}
 
@@ -41,6 +61,12 @@ define(
 			});
 		}
 
+		/**
+		 *
+		 * @function onAccessTokenResponse
+		 * @param {Object} response
+		 * @param {Function} callback
+		 */
 		function onAccessTokenResponse(response, callback){
 			if (!response.error) {
 				accessToken = response.accessToken;
@@ -50,10 +76,13 @@ define(
 					throw new Error('It seems the requested access token is faulty.');
 				}
 
-				window.history &&
-				window.history.pushState({}, document.title, window.location.href.replace(/\?.*/, ''));
+				if (window.history !== undefined) {
+					window.history.pushState({}, document.title, window.location.href.replace(/\?.*/, ''));
+				}
 
-				callback && callback(accessToken);
+				if (typeof callback === 'function') {
+					callback(accessToken);
+				}
 			} else if (response.error === 'needAuthorization') {
 				window.location.href = response.authUrl;
 			} else {
@@ -61,9 +90,16 @@ define(
 			}
 		}
 
+		/**
+		 *
+		 * @function apiCall
+		 * @param {String} method
+		 * @param {Function} callback
+		 */
 		function apiCall(method, callback){
-			var apiUrl = 'https://api.ustream.tv',
-				apiResponseType = 'json';
+			var apiResponseType = 'json',
+				apiUrlTemplate = 'https://api.ustream.tv/%method%.%responseType%',
+				apiUrl;
 
 			if (!hasAccessToken()) {
 				getAccessToken(function(){
@@ -72,23 +108,34 @@ define(
 				return;
 			}
 
-			apiUrl += '/' + method + '.' + apiResponseType;
+			// create the api call url
+			apiUrl = apiUrlTemplate.replace('%method%', method)
+				.replace('%responseType%', apiResponseType);
 
 			$.ajax({
 				dataType: apiResponseType,
 				url: apiUrl,
 
 				headers: {
+					// Send the access token in the header
 					'Authorization': 'Bearer ' + accessToken
 				},
 
 				success: function(response){
-					callback && callback(response);
+					if (typeof callback === 'function') {
+						callback(response);
+					}
 				}
 			});
 		}
 
+		/**
+		 * Get user channels
+		 * @function getSelfChannels
+		 * @param {Function} callback
+		 */
 		function getSelfChannels(callback){
+			// internal callback
 			function onSelfChannelsResponse(response) {
 				callback(response.channels);
 			}

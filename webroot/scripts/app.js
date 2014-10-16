@@ -1,28 +1,41 @@
+/**
+ * Broadcaster Embed Example
+ */
 define(
 	[
-		'ustream-api',
-		'channel-selector',
-		'flash-handler',
+		'module/ustream-api',
+		'module/broadcaster',
+		'module/viewer',
+		'view/channel-selector',
 		'bootstrap'
 	],
 	function(
 		ustreamAPI,
-		channelSelector,
-		flashHandler
+		broadcaster,
+		viewer,
+		channelSelector
 	){
+		var accessToken;
 
 		function verifyAccessToken(){
 			if (!ustreamAPI.hasAccessToken()) {
-				ustreamAPI.getAccessToken(createChannelSelector);
+				ustreamAPI.getAccessToken(onGetAccessToken);
 			}
 		}
 
-		function createChannelSelector(){
-			channelSelector.createSelector(onChannelSelect);
+		function onGetAccessToken(_accessToken){
+			accessToken = _accessToken;
+
+			ustreamAPI.getSelfChannels(onSelfChannelsResponse);
 		}
 
-		function onChannelSelect(selectedCid){
-			flashHandler.embed(selectedCid);
+		function onSelfChannelsResponse(channels){
+			channelSelector.init(channels, onChannelSelect);
+		}
+
+		function onChannelSelect(cid){
+			broadcaster.init(cid);
+			viewer.init(cid);
 		}
 
 		verifyAccessToken();

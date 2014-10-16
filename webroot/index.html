@@ -6,13 +6,13 @@
 
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-	<div class="container" style="width: 700px;">
+	<h1>Ustream Broadcaster Embed Example</h1>
 
-		<h1>Ustream Broadcaster Embed Example</h1>
-
+	<div class="row">
 		<div class="panel panel-primary" style="display: none;">
 			<div class="panel-heading">
 				<h3 class="panel-title">Select a channel to broadcast</h3>
@@ -22,17 +22,130 @@
 				<ul id="channel-selector" class="nav nav-pills nav-stacked"></ul>
 			</div>
 		</div>
+	</div>
 
-		<div class="panel panel-primary" style="display: none;">
-			<div class="panel-heading">
-				<h3 class="panel-title">Broadcaster</h3>
+	<div class="row row-wide" style="display: none;">
+		<div class="col-md-6 panel-group">
+			<h3>Broadcaster Side</h3>
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" href="#SyncedMetaPanel">SyncedMeta</a>
+					</h4>
+				</div>
+
+				<div id="SyncedMetaPanel" class="panel-collapse collapse">
+					<div class="panel-body">
+						<form id="SyncedMetaSenderForm" role="form">
+							<div class="form-group">
+								<label for="SyncedMetaMessage" class="control-label">SyncedMeta message</label>
+								<textarea name="SyncedMetaMessage" id="SyncedMetaMessage" class="form-control"></textarea>
+							</div>
+
+							<div class="checkbox">
+								<label><input class="json-object" type="checkbox">Send as JSON object</label>
+							</div>
+
+							<button type="submit" class="btn btn-primary btn-send">Send Message</button>
+						</form>
+					</div>
+				</div>
 			</div>
 
-			<div class="panel-body">
-				<div id="Broadcaster"></div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" href="#BroadcasterInfosPanel">Infos from Flash Broadcaster</a>
+					</h4>
+				</div>
+
+				<div id="BroadcasterInfosPanel" class="panel-collapse collapse">
+					<div class="panel-body">
+						<table class="table table-striped">
+							<tbody>
+								<tr class="channel-live">
+									<th>Channel live</th>
+									<td><span class="glyphicon glyphicon-remove text-danger value"></span></td>
+								</tr>
+
+								<tr class="broadcasting">
+									<th>Broadcasting</th>
+									<td><span class="glyphicon glyphicon-remove text-danger value"></span></td>
+								</tr>
+
+								<tr class="recording">
+									<th>Recording</th>
+									<td><span class="glyphicon glyphicon-remove text-danger value"></span></td>
+								</tr>
+
+								<tr class="viewers">
+									<th>Viewers</th>
+									<td><span class="value">N/A</span></td>
+								</tr>
+
+								<tr class="aspect-ratio">
+									<th>Aspect ratio</th>
+									<td><span class="value">N/A</span></td>
+								</tr>
+
+								<tr class="external-stream-owner">
+									<th>External stream owner</th>
+									<td><span class="glyphicon glyphicon-remove text-danger value"></span></td>
+								</tr>
+
+								<tr class="preview-mode">
+									<th>Preview mode</th>
+									<td><span class="glyphicon glyphicon-remove text-danger value"></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">Flash Broadcaster</h4>
+				</div>
+
+				<div class="panel-body">
+					<div id="Broadcaster"></div>
+				</div>
+			</div>
+
 		</div>
 
+		<div class="col-md-6 panel-group">
+			<h3>Viewer Side</h3>
+
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" href="#SyncedMetaReceiverPanel">SyncedMeta</a>
+					</h4>
+				</div>
+
+				<div id="SyncedMetaReceiverPanel" class="panel-collapse collapse">
+					<div class="panel-body">
+						<table class="table table-striped">
+							<thead><th class="timestamp">timestamp</th><th class="message">message</th></thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">Viewer</h4>
+				</div>
+
+				<div class="panel-body">
+					<div id="Viewer"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
